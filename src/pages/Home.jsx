@@ -44,7 +44,7 @@ export default function Home() {
                             <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-200">
                                 <span className="bg-gradient-to-r from-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
                                     <Typewriter
-                                        words={['Frontend Developer', 'UI/UX Explorer']}
+                                        words={['Passionate Frontend Developer', 'Creating beautiful, user-friendly websites']}
                                         loop={0}
                                         cursor
                                         cursorStyle="_"
