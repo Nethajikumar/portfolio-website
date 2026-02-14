@@ -53,15 +53,15 @@ export default function Projects() {
       technologies: ["Spring Boot", "In-Memory H2 Database", "REST APIs"],
       liveUrl: "https://github.com/Nethajikumar/springboot-Api-test",
     },
-    {
-      id: 5,
-      title: "Portfolio Website",
-      image: "/portfolio.jpg",
-      description:
-        "Personal portfolio website showcasing my profile, resume, projects, and contact information with a clean, responsive, and user-friendly design.",
-      technologies: ["Html", "Css", "Javascript"],
-      liveUrl: "https://nethajikumar.github.io/portfolio/",
-    },
+    // {
+    //   id: 5,
+    //   title: "Portfolio Website",
+    //   image: "/portfolio.jpg",
+    //   description:
+    //     "Personal portfolio website showcasing my profile, resume, projects, and contact information with a clean, responsive, and user-friendly design.",
+    //   technologies: ["Html", "Css", "Javascript"],
+    //   liveUrl: "https://nethajikumar.github.io/portfolio/",
+    // },
     {
       id: 6,
       title: "Todo-List",

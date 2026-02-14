@@ -122,7 +122,7 @@ export default function Resume() {
           <CardContent className="flex flex-col items-center py-8">
             <h3 className="text-xl font-semibold mb-4">Download Resume</h3>
             <a
-              href="https://drive.google.com/file/d/1F_GcqciyvCpDV3K5QX_YgRlrNKiSguCc/view?usp=drivesdk"
+              href="https://drive.google.com/file/d/13Ud2CpqsKjl9WXYbN9ZwhLGLq9nAaPiu/view"
               target="_blank"
               rel="noopener noreferrer"
             >
