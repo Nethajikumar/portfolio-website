@@ -18,7 +18,16 @@ export default function Projects() {
 
   const projects = [
     {
-      id: 1,
+  id: 1,
+  title: "Modern Todo List",
+  image: "/todo.jpg",
+  description:
+    "A modern, responsive Todo application built with Vanilla JavaScript. Features dynamic DOM rendering, task state management, localStorage persistence, task editing, deletion, and automatic separation of active and completed tasks using checkbox-driven interaction.",
+  technologies: ["HTML", "CSS", "JavaScript", "LocalStorage"],
+  liveUrl: "https://nethajikumar.github.io/todo-app/"
+},
+    {
+      id: 2,
       title: "Weather-App",
       image: "/weather.jpg",
       description:
@@ -27,7 +36,7 @@ export default function Projects() {
       liveUrl: "https://nethajikumar.github.io/weatherapp/",
     },
     {
-      id: 2,
+      id: 3,
       title: "Make-Deal",
       image: "/deal.jpg",
       description:
@@ -36,7 +45,7 @@ export default function Projects() {
       liveUrl: "https://make-deal.vercel.app/",
     },
     {
-      id: 3,
+      id: 4,
       title: "Spotify-Clone",
       image: "/spotify.jpg",
       description:
@@ -45,7 +54,7 @@ export default function Projects() {
       liveUrl: "https://nethajikumar.github.io/spotify-clone/",
     },
     {
-      id: 4,
+      id: 5,
       title: "Springboot-API-Test",
       image: "/spring.jpg",
       description:
@@ -62,15 +71,15 @@ export default function Projects() {
     //   technologies: ["Html", "Css", "Javascript"],
     //   liveUrl: "https://nethajikumar.github.io/portfolio/",
     // },
-    {
-      id: 6,
-      title: "Todo-List",
-      image: "/spring.jpg",
-      description:
-        "A Todo list built with Spring Boot. Add, update, delete, and view tasks in a structured UI.",
-      technologies: ["Springboot", "Java", "H2 Database", "Postman"],
-      liveUrl: "https://github.com/Nethajikumar/springboot-Api-test",
-    },
+    // {
+    //   id: 6,
+    //   title: "Todo-List",
+    //   image: "/spring.jpg",
+    //   description:
+    //     "A Todo list built with Spring Boot. Add, update, delete, and view tasks in a structured UI.",
+    //   technologies: ["Springboot", "Java", "H2 Database", "Postman"],
+    //   liveUrl: "https://github.com/Nethajikumar/springboot-Api-test",
+    // },
   ];
 
   const nextProject = () => {
