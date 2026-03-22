@@ -96,6 +96,10 @@ export default function Contact() {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
     >
+      <Helmet>
+        <title>Nethaji - Developer</title>
+        <meta name="description" content="Interested in working together? Reach out for collaborations, project inquiries, or just to say hello." />
+      </Helmet>
       <div className="max-w-4xl mx-auto">
         <div className="text-center py-10 lg:pt-0">
           <h1 className="text-4xl font-extrabold mb-4">

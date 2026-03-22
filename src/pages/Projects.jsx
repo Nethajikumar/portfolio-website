@@ -126,7 +126,7 @@ export default function Projects() {
       exit={{ opacity: 0 }}
     >
       <Helmet>
-        <title>Portfolio Showreel | Nethaji K</title>
+        <title>Nethaji - Developer</title>
         <meta name="description" content="Discover my latest projects, from real-time weather dashboards to scalable full-stack applications. See the technology behind the craft." />
       </Helmet>
       <div className="max-w-5xl mx-auto">

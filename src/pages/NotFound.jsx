@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-transparent">
       <Helmet>
-        <title>404 | Page Not Found</title>
+        <title>Nethaji - Developer</title>
         <meta name="robots" content="noindex" />
       </Helmet>
       <SpotlightCard className="max-w-md w-full p-8 sm:p-12 text-center border-none bg-white/5 backdrop-blur-xl rounded-[2.5rem]">

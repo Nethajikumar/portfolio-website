@@ -47,8 +47,8 @@ export default function Home() {
                 }}
             />
             <Helmet>
-                <title>Nethaji K | Premium Web Developer & Full Stack Architect</title>
-                <meta name="description" content="Portfolio of Nethaji K, a premium web developer specializing in React, Spring Boot, and high-end UI/UX experiences. Explore my showreel of digital creations." />
+                <title>Nethaji - Developer</title>
+                <meta name="description" content="Portfolio of Nethaji K, a premium web developer specializing in React, Spring Boot, and high-end UI/UX experiences." />
             </Helmet>
       <div className="max-w-4xl mx-auto flex flex-col items-center justify-center w-full min-h-[calc(100vh-120px)]">
         

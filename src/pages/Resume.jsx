@@ -34,7 +34,7 @@ export default function Resume() {
       exit={{ opacity: 0 }}
     >
       <Helmet>
-        <title>Experience & Technical Ecosystem | Nethaji K</title>
+        <title>Nethaji - Developer</title>
         <meta name="description" content="Professional journey and technical expertise of Nethaji K. Specialized in React, Java, Spring Boot, and modern full-stack architectures." />
       </Helmet>
       <div className="max-w-4xl mx-auto space-y-16">
