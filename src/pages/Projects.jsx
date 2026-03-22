@@ -11,75 +11,92 @@ import {
   ChevronRight,
   ExternalLink,
   Github,
+  X as FiX
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import SpotlightCard from "../components/SpotlightCard";
+import { Helmet } from 'react-helmet-async';
 
 export default function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const projects = [
     {
-  id: 1,
-  title: "Modern Todo List",
-  image: "/todo.jpg",
-  description:
-    "A modern, responsive Todo application built with Vanilla JavaScript. Features dynamic DOM rendering, task state management, localStorage persistence, task editing, deletion, and automatic separation of active and completed tasks using checkbox-driven interaction.",
-  technologies: ["HTML", "CSS", "JavaScript", "LocalStorage"],
-  liveUrl: "https://nethajikumar.github.io/todo-app/"
-},
-    {
-      id: 2,
-      title: "Weather-App",
-      image: "/weather.jpg",
-      description:
-        "A React-based responsive weather application using the OpenWeatherMap API. Displays real-time weather info with a modern UI, dark mode, and error handling.",
-      technologies: ["React", "Js", "API integration"],
-      liveUrl: "https://nethajikumar.github.io/weatherapp/",
+      id: 0,
+      title: "Smart Weather Dashboard",
+      image: "/weather-dashboard.png",
+      description: "An advanced, real-time weather intelligence platform featuring 7-day forecasts, air quality monitoring, and dynamic celestial visualizations.",
+      detailedDescription: "A comprehensive weather intelligence suite designed for precision and visual clarity. It leverages high-performance API integrations to deliver hyper-local data with a focus on premium dashboard aesthetics.",
+      technologies: ["React", "API Integration", "Framer Motion", "Tailwind CSS"],
+      features: [
+        "Real-time Air Quality & UV Index monitoring",
+        "Dynamic Sunrise/Sunset visualizations",
+        "14-day extended outlook with interactive charts",
+        "Location-aware weather intelligence"
+      ],
+      liveUrl: "https://smart-weather-dashboard-lovat.vercel.app/"
     },
     {
-      id: 3,
+      id: 1,
       title: "Make-Deal",
       image: "/deal.jpg",
-      description:
-        "A modern role-based onboarding system inspired by platforms like Upwork and LinkedIn, where buyers and sellers have tailored experiences.",
+      description: "A modern role-based onboarding system inspired by platforms like Upwork and LinkedIn.",
+      detailedDescription: "A full-scale onboarding and marketplace platform facilitating seamless interaction between buyers and sellers. Features robust role-based access control and modern UI patterns for high-conversion user flows.",
       technologies: ["React js", "Vite", "Javascript"],
+      features: [
+        "Custom role-based dashboard system",
+        "Secure onboarding workflow",
+        "Interactive profile management",
+        "Real-time form validation"
+      ],
       liveUrl: "https://make-deal.vercel.app/",
     },
     {
-      id: 4,
+      id: 2,
+      title: "Modern Todo List",
+      image: "/todo-new.png",
+      description: "A high-performance Todo application with persistent state and fluid micro-interactions.",
+      detailedDescription: "Engineered for speed and simplicity, this Todo application utilizes advanced DOM manipulation and localStorage persistence to provide a seamless productivity experience.",
+      technologies: ["HTML", "CSS", "JavaScript", "LocalStorage"],
+      features: [
+        "LocalStorage data persistence",
+        "Drag-and-drop task prioritization",
+        "Instant search and filtering",
+        "Automatic light/dark mode syncing"
+      ],
+      liveUrl: "https://nethajikumar.github.io/todo-app/"
+    },
+    {
+      id: 3,
       title: "Spotify-Clone",
       image: "/spotify.jpg",
-      description:
-        "Developed a responsive Spotify clone that mimics the core UI and functionality of the original music streaming platform.",
+      description: "A pixel-perfect UI recreation of the Spotify web player with interactive audio controls.",
+      detailedDescription: "A deep dive into complex UI components and state management, recreating the sophisticated layout and user experience of the world's leading music streaming platform.",
       technologies: ["Html", "Css", "Javascript"],
+      features: [
+        "Dynamic playlist rendering",
+        "Interactive media playback controls",
+        "Sidebar navigation system",
+        "Responsive album art displays"
+      ],
       liveUrl: "https://nethajikumar.github.io/spotify-clone/",
     },
     {
-      id: 5,
+      id: 4,
       title: "Springboot-API-Test",
       image: "/spring.jpg",
-      description:
-        "This is a simple Spring Boot RESTful API project that demonstrates basic CRUD operations.",
-      technologies: ["Spring Boot", "In-Memory H2 Database", "REST APIs"],
+      description: "A robust Java-based RESTful API demonstrating industrial-standard CRUD patterns.",
+      detailedDescription: "A backend-focused project showcasing the power of Spring Boot for scalable API development. Includes comprehensive endpoint testing and clean architecture principles.",
+      technologies: ["Spring Boot", "H2 Database", "REST APIs", "Maven"],
+      features: [
+        "Full CRUD lifecycle implementation",
+        "Automated API documentation",
+        "In-memory database integration",
+        "Strict type-safe data handling"
+      ],
       liveUrl: "https://github.com/Nethajikumar/springboot-Api-test",
     },
-    // {
-    //   id: 5,
-    //   title: "Portfolio Website",
-    //   image: "/portfolio.jpg",
-    //   description:
-    //     "Personal portfolio website showcasing my profile, resume, projects, and contact information with a clean, responsive, and user-friendly design.",
-    //   technologies: ["Html", "Css", "Javascript"],
-    //   liveUrl: "https://nethajikumar.github.io/portfolio/",
-    // },
-    // {
-    //   id: 6,
-    //   title: "Todo-List",
-    //   image: "/spring.jpg",
-    //   description:
-    //     "A Todo list built with Spring Boot. Add, update, delete, and view tasks in a structured UI.",
-    //   technologies: ["Springboot", "Java", "H2 Database", "Postman"],
-    //   liveUrl: "https://github.com/Nethajikumar/springboot-Api-test",
-    // },
   ];
 
   const nextProject = () => {
@@ -92,148 +109,280 @@ export default function Projects() {
 
   const currentProject = projects[currentIndex];
 
+  // Close modal on ESC key
+  React.useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') setSelectedProject(null);
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background px-4 py-6">
+    <motion.div
+      className="min-h-screen bg-transparent px-4 py-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Helmet>
+        <title>Portfolio Showreel | Nethaji K</title>
+        <meta name="description" content="Discover my latest projects, from real-time weather dashboards to scalable full-stack applications. See the technology behind the craft." />
+      </Helmet>
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2">Projects</h1>
-          <p className="text-base text-muted-foreground">
-            Explore some of my work
-          </p>
+        <div className="text-center mb-10 pt-8 xl:pt-0">
+          <motion.h1
+            className="text-4xl font-extrabold mb-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <span className="bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">Portfolio Showreel</span>
+          </motion.h1>
+          <motion.p
+            className="text-base text-muted-foreground"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            A curated selection of my most impactful digital creations
+          </motion.p>
         </div>
 
         {/* Main Featured Project */}
-        <div className="mb-8">
-          <Card>
-            <div className="h-48 overflow-hidden rounded-t-lg">
-              <img
-                src={currentProject.image}
-                alt={currentProject.title}
-                className="w-full h-full object-cover hover:scale-105 transition-transform"
-              />
-            </div>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-xl">{currentProject.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <p className="text-sm text-muted-foreground">
-                {currentProject.description}
-              </p>
-              <div className="flex flex-wrap gap-1">
-                {currentProject.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-0.5 text-xs bg-accent/30 rounded-full"
+        <div className="mb-10">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentProject.id}
+              initial={{ opacity: 0, scale: 0.98, x: 20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 0.98, x: -20 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            >
+              <SpotlightCard className="border-none overflow-hidden rounded-3xl group/card">
+                <div className="flex flex-col md:grid md:grid-cols-2">
+                  <div 
+                    className="aspect-video md:aspect-auto md:h-[500px] lg:h-[450px] w-full overflow-hidden relative cursor-pointer"
+                    onClick={() => setSelectedProject(currentProject)}
                   >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="flex gap-2 pt-1">
-                {currentProject.liveUrl && (
-                  <Button size="sm" asChild>
-                    <a
-                      href={currentProject.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <img
+                      src={currentProject.image}
+                      alt={currentProject.title}
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#070913] via-transparent to-transparent opacity-60" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px]">
+                       <Button variant="outline" className="rounded-full border-white/20 bg-white/10 text-white backdrop-blur-md">View Case Study</Button>
+                    </div>
+                  </div>
+                  
+                  <CardContent className="space-y-4 sm:space-y-6 p-6 sm:p-8 flex flex-col justify-center">
+                    <motion.div
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="cursor-pointer"
+                      onClick={() => setSelectedProject(currentProject)}
                     >
-                      <ExternalLink className="w-4 h-4 mr-1" /> Live
-                    </a>
-                  </Button>
-                )}
-                {currentProject.githubUrl && (
-                  <Button size="sm" variant="outline" asChild>
-                    <a
-                      href={currentProject.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Github className="w-4 h-4 mr-1" /> Code
-                    </a>
-                  </Button>
-                )}
-              </div>
-            </CardContent>
-          </Card>
+                      <CardTitle className="text-2xl sm:text-3xl lg:text-5xl font-black bg-gradient-to-r from-primary via-[#a855f7] to-secondary text-transparent bg-clip-text mb-2 tracking-tighter">
+                        {currentProject.title}
+                      </CardTitle>
+                    </motion.div>
+
+                    <p className="text-base text-muted-foreground leading-relaxed line-clamp-3">
+                      {currentProject.detailedDescription}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {currentProject.technologies.slice(0, 3).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-white/5 text-primary border border-white/10 rounded-lg"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-4 pt-6 mt-auto">
+                        <Button onClick={() => setSelectedProject(currentProject)} className="bg-primary hover:bg-primary/90 text-white shadow-[0_0_20px_hsl(var(--primary)/0.4)] transition-all flex-1 h-12 rounded-xl">
+                          Learn More
+                        </Button>
+                      {currentProject.liveUrl && (
+                        <Button variant="outline" asChild className="border-white/10 hover:bg-white/5 px-6 h-12 rounded-xl">
+                          <a href={currentProject.liveUrl} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        </Button>
+                      )}
+                    </div>
+                  </CardContent>
+                </div>
+              </SpotlightCard>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Navigation Controls */}
-        <div className="flex justify-center items-center gap-6 mb-6">
-          <Button size="icon" variant="outline" onClick={prevProject}>
-            <ChevronLeft className="w-4 h-4" />
+        <div className="flex justify-center items-center gap-8 mb-16">
+          <Button size="icon" variant="outline" onClick={prevProject} className="w-12 h-12 rounded-full border-white/10 hover:bg-primary/20 hover:text-primary transition-all">
+            <ChevronLeft className="w-6 h-6" />
           </Button>
-          <div className="flex gap-1">
-            {projects.map((_, index) => (
-              <span
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2.5 h-2.5 rounded-full cursor-pointer ${
-                  index === currentIndex ? "bg-primary" : "bg-muted"
-                }`}
+          <div className="flex gap-3">
+            {projects.map((project) => (
+              <motion.span
+                key={project.id}
+                onClick={() => setCurrentIndex(projects.indexOf(project))}
+                className={`h-2 rounded-full cursor-pointer transition-all duration-500 ${projects.indexOf(project) === currentIndex ? "bg-primary w-12" : "bg-white/10 w-2 hover:bg-white/30"
+                  }`}
+                whileHover={{ scale: 1.2 }}
               />
             ))}
           </div>
-          <Button size="icon" variant="outline" onClick={nextProject}>
-            <ChevronRight className="w-4 h-4" />
+          <Button size="icon" variant="outline" onClick={nextProject} className="w-12 h-12 rounded-full border-white/10 hover:bg-primary/20 hover:text-primary transition-all">
+            <ChevronRight className="w-6 h-6" />
           </Button>
         </div>
 
         {/* Mini Cards Grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {projects.map((project, index) => (
-            <Card
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <motion.div
               key={project.id}
-              onClick={() => setCurrentIndex(index)}
-              className={`cursor-pointer rounded-md transition transform hover:scale-105 ${
-                index === currentIndex
-                  ? "ring-2 ring-green-500"
-                  : "ring-1 ring-gray-200"
-              }`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              onClick={() => setSelectedProject(project)}
             >
-              <div className="h-32 overflow-hidden rounded-t-md">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <CardContent className="p-3 flex flex-col gap-2">
-                <h3 className="text-sm font-semibold">{project.title}</h3>
-                <p className="text-xs text-muted-foreground line-clamp-2">
-                  {project.description}
-                </p>
-
-                {/* Mini card actions */}
-                <div className="flex gap-2 mt-2">
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs flex items-center gap-1 text-blue-600 hover:underline"
-                      onClick={(e) => e.stopPropagation()} // prevent changing currentIndex
-                    >
-                      <ExternalLink className="w-3 h-3" /> Live
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs flex items-center gap-1 text-gray-600 hover:underline"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github className="w-3 h-3" /> Code
-                    </a>
-                  )}
+              <SpotlightCard
+                className={`rounded-3xl overflow-hidden h-full flex flex-col group cursor-pointer transition-all duration-500 ${projects.indexOf(project) === currentIndex
+                  ? "border-primary shadow-[0_0_30px_hsl(var(--primary)/0.2)]"
+                  : "border-white/5 hover:border-white/20"
+                  }`}
+              >
+                <div className="h-44 overflow-hidden relative">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#070913] to-transparent opacity-40" />
+                  <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-white/10">
+                     <span className="text-[10px] text-white font-bold">{project.technologies[0]}</span>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+                <CardContent className="p-5 flex flex-col flex-1">
+                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground line-clamp-2 mb-4">
+                    {project.description}
+                  </p>
+
+                  <div className="flex gap-4 mt-auto pt-4 border-t border-white/5 group-hover:border-primary/20 transition-colors">
+                     <span className="text-xs font-black uppercase text-primary tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">
+                        View Details <ChevronRight className="w-3 h-3" />
+                     </span>
+                  </div>
+                </CardContent>
+              </SpotlightCard>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+
+      {/* Project Detail Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/90 backdrop-blur-xl"
+              onClick={() => setSelectedProject(null)}
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#070913] border border-white/10 rounded-[2.5rem] shadow-2xl sidebar-hide"
+            >
+              <button 
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-6 right-6 p-2 bg-white/5 hover:bg-white/10 rounded-full text-white z-10 transition-colors"
+              >
+                <FiX className="w-6 h-6" />
+              </button>
+
+              <div className="grid md:grid-cols-2 gap-0">
+                 <div className="h-[300px] md:h-full relative overflow-hidden">
+                    <img 
+                      src={selectedProject.image} 
+                      alt={selectedProject.title} 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#070913] via-transparent to-transparent" />
+                 </div>
+                 <div className="p-8 sm:p-12 space-y-8 flex flex-col">
+                    <div>
+                      <h2 className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text tracking-tighter mb-4">
+                        {selectedProject.title}
+                      </h2>
+                      <p className="text-muted-foreground leading-relaxed text-lg">
+                        {selectedProject.detailedDescription}
+                      </p>
+                    </div>
+
+                    <div className="space-y-4">
+                       <h3 className="text-xs font-black uppercase tracking-[0.3em] text-white/40">Core Technologies</h3>
+                       <div className="flex flex-wrap gap-2">
+                         {selectedProject.technologies.map(tech => (
+                           <span key={tech} className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-bold text-primary">
+                             {tech}
+                           </span>
+                         ))}
+                       </div>
+                    </div>
+
+                    <div className="space-y-4">
+                       <h3 className="text-xs font-black uppercase tracking-[0.3em] text-white/40">Key Highights</h3>
+                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                         {selectedProject.features.map(feature => (
+                           <li key={feature} className="flex items-start gap-2 text-sm text-foreground/80 font-medium">
+                              <div className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                              {feature}
+                           </li>
+                         ))}
+                       </ul>
+                    </div>
+
+                    <div className="pt-6 mt-auto flex flex-col sm:flex-row gap-4">
+                      {selectedProject.liveUrl && (
+                        <Button asChild className="bg-primary hover:bg-primary/90 text-white h-14 rounded-2xl flex-1 text-lg font-black tracking-tighter">
+                          <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer">
+                            VISIT LIVE PROJECT <ExternalLink className="w-5 h-5 ml-2" />
+                          </a>
+                        </Button>
+                      )}
+                      {selectedProject.githubUrl && (
+                        <Button variant="outline" asChild className="border-white/10 h-14 rounded-2xl flex-1 text-lg font-black tracking-tighter">
+                          <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
+                             SOURCE CODE
+                          </a>
+                        </Button>
+                      )}
+                    </div>
+                 </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
