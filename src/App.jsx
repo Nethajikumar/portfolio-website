@@ -52,7 +52,7 @@ function App() {
         
         <AppSidebar />
 
-        <div className="flex-1 pt-24 xl:pt-0 xl:ml-72 relative">
+        <div className="flex-1 w-full min-w-0 pt-24 xl:pt-0 xl:ml-72 relative">
           {/* Main ambient background decoration - reactive to scroll */}
           <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
              <motion.div 

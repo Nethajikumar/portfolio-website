@@ -100,7 +100,7 @@ export default function Contact() {
         <title>Nethaji - Developer</title>
         <meta name="description" content="Interested in working together? Reach out for collaborations, project inquiries, or just to say hello." />
       </Helmet>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto w-full overflow-x-hidden">
         <div className="text-center py-10 lg:pt-0">
           <h1 className="text-4xl font-extrabold mb-4">
             <span className="bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">Get In Touch</span>
@@ -184,7 +184,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground font-medium">Email</p>
-                      <span className="text-foreground group-hover:text-primary transition-colors">nethajik.mail@gmail.com</span>
+                      <span className="text-foreground group-hover:text-primary transition-colors break-all">nethajik.mail@gmail.com</span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-secondary/50 transition-colors">

@@ -19,7 +19,7 @@ const AppSidebar = () => {
 
   const linkClasses = (path) =>
     `flex items-center gap-3 px-4 py-3 text-lg w-full rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-primary
-     ${location.pathname === path ? "bg-primary/20 text-primary font-semibold shadow-[inset_4px_0_0_0_hsl(var(--primary))] bg-gradient-to-r from-primary/10 to-transparent" : "text-muted-foreground"}`;
+     ${location.pathname === path ? "bg-primary/20 text-primary font-semibold xl:shadow-[inset_4px_0_0_0_hsl(var(--primary))] shadow-[inset_-4px_0_0_0_hsl(var(--primary))] bg-gradient-to-r from-primary/10 to-transparent" : "text-muted-foreground"}`;
 
   return (
     <>
@@ -50,12 +50,15 @@ const AppSidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-72 bg-[#070913]/95 backdrop-blur-3xl border-r border-white/5 text-foreground z-50 shadow-[20px_0_50px_rgba(0,0,0,0.5)] transform transition-transform duration-300 ease-out
-        ${isOpen ? "translate-x-0" : "-translate-x-full"} xl:translate-x-0 flex flex-col`}
+        className={`fixed top-0 xl:left-0 xl:right-auto right-0 h-full w-72 bg-[#070913]/95 backdrop-blur-3xl xl:border-r border-l border-white/5 text-foreground z-50 xl:shadow-[20px_0_50px_rgba(0,0,0,0.5)] shadow-[-20px_0_50px_rgba(0,0,0,0.5)] transform transition-transform duration-300 ease-out
+        ${isOpen ? "translate-x-0" : "translate-x-full"} xl:translate-x-0 flex flex-col`}
       >
         <div className="hidden xl:flex items-center justify-center h-32 mb-4 border-b border-white/5 bg-white/5">
           <h2 className="text-3xl font-black bg-gradient-to-r from-primary via-[#a855f7] to-secondary text-transparent bg-clip-text tracking-tighter">NK.DEV</h2>
         </div>
+
+        {/* Spacer for mobile top bar */}
+        <div className="xl:hidden h-20 w-full" />
 
         {/* Available for Work Status Widget */}
         <div className="px-6 mb-6">
@@ -71,7 +74,7 @@ const AppSidebar = () => {
           </div>
         </div>
 
-        <nav className="flex flex-col space-y-3 px-6 mt-20 xl:mt-2">
+        <nav className="flex flex-col space-y-3 px-6 mt-2">
           {linkItems.map((item) => (
             <Link
               key={item.path}

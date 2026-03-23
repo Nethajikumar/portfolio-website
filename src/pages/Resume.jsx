@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import SpotlightCard from '../components/SpotlightCard';
 import {
   SiReact, SiJavascript, SiTailwindcss, SiSpringboot,
-  SiMysql, SiGit, SiPostman, SiVite, SiHtml5, SiCss3
+  SiMysql, SiGit, SiPostman, SiVite, SiHtml5, SiCss3, SiFigma
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 
@@ -24,6 +24,7 @@ export default function Resume() {
     { name: 'Vite', icon: SiVite, color: 'text-[#646CFF]' },
     { name: 'Git', icon: SiGit, color: 'text-[#F05032]' },
     { name: 'Postman', icon: SiPostman, color: 'text-[#FF6C37]' },
+    { name: 'Figma', icon: SiFigma, color: 'text-[#F24E1E]' },
   ];
 
   return (
@@ -50,6 +51,34 @@ export default function Resume() {
           </motion.h1>
           <p className="text-base sm:text-lg text-muted-foreground/80 font-medium px-4">My professional journey and technical expertise</p>
         </div>
+
+        {/* About Me */}
+        <motion.section
+          className="px-4 sm:px-0"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <SpotlightCard className="p-6 sm:p-10 border-none bg-white/5 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[80px] rounded-full -mr-16 -mt-16 group-hover:bg-primary/20 transition-colors" />
+            <div className="flex items-center gap-4 mb-6">
+              <h2 className="text-2xl sm:text-3xl font-black text-white italic tracking-tight">About Me</h2>
+              <div className="h-[2px] flex-1 bg-gradient-to-r from-primary/40 to-transparent rounded-full" />
+            </div>
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base font-medium">
+              <p>
+                I am a passionate and detail-oriented Frontend Developer with a strong foundation in modern web technologies including HTML, CSS, JavaScript, and React. As a recent postgraduate, I am eager to apply my technical skills and creativity to build responsive, user-friendly, and visually engaging web applications.
+              </p>
+              <p>
+                I have hands-on experience developing real-world projects such as interactive dashboards and dynamic web applications, where I focused on clean UI design, performance optimization, and seamless user experience. I am particularly interested in crafting intuitive interfaces and continuously improving my knowledge of modern frontend tools and frameworks.
+              </p>
+              <p>
+                I am a quick learner who enjoys solving problems and adapting to new technologies. My goal is to contribute to a growth-oriented organization where I can enhance my skills, collaborate with a talented team, and build impactful digital solutions.
+              </p>
+            </div>
+          </SpotlightCard>
+        </motion.section>
 
         {/* Technical Stack Bento Grid */}
         <section className="px-4 sm:px-0">
@@ -86,8 +115,8 @@ export default function Resume() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <SpotlightCard className="h-full border-none bg-white/5 flex flex-col items-center justify-center p-4 sm:p-6 group">
-                <SiSpringboot className="w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6 text-[#6DB33F] grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+              <SpotlightCard className="h-full border-none bg-gradient-to-b from-[#6DB33F]/10 to-transparent flex flex-col items-center justify-center p-4 sm:p-6 group">
+                <SiSpringboot className="w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6 text-[#6DB33F] drop-shadow-[0_0_15px_rgba(109,179,63,0.3)] transition-all duration-500 group-hover:scale-110" />
                 <div className="text-center">
                   <span className="block text-base sm:text-lg font-bold text-white uppercase tracking-wider">Spring</span>
                   <span className="block text-[10px] sm:text-xs text-muted-foreground font-medium">Backend</span>
@@ -114,23 +143,25 @@ export default function Resume() {
 
             {/* Database - Java Duo */}
             <motion.div 
-              className="col-span-1 lg:col-span-1 row-span-1"
+              className="col-span-1 lg:col-span-1 row-span-1 md:row-span-2"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <SpotlightCard className="h-full border-none bg-white/5 flex flex-col items-center justify-center p-4 group">
-                <FaJava className="w-8 h-8 text-[#007396] transition-transform group-hover:rotate-12" />
-                <span className="text-[10px] font-black text-muted-foreground/60 uppercase tracking-widest mt-1">Java</span>
+              <SpotlightCard className="h-full border-none bg-gradient-to-b from-[#007396]/10 to-transparent flex flex-col items-center justify-center p-4 group">
+                <FaJava className="w-10 h-10 sm:w-14 sm:h-14 mb-3 text-[#007396] transition-transform group-hover:rotate-12 drop-shadow-[0_0_15px_rgba(0,115,150,0.3)]" />
+                <div className="text-center">
+                  <span className="block text-sm sm:text-base font-bold text-white uppercase tracking-wider">Java</span>
+                  <span className="block text-[8px] sm:text-[10px] text-muted-foreground font-medium">Core Backend</span>
+                </div>
               </SpotlightCard>
             </motion.div>
 
-            {/* Small Tools Grid Integration */}
+            {/* Middle row skills to fill space under JS */}
             {[
-              { icon: SiMysql, name: "MySQL", color: "text-[#4479A1]" },
-              { icon: SiPostman, name: "Postman", color: "text-[#FF6C37]" },
-              { icon: SiGit, name: "Git", color: "text-[#F05032]" },
+              { icon: SiMysql, name: "MySQL", color: "text-[#4479A1]", glow: "rgba(68,121,161,0.3)" },
+              { icon: SiPostman, name: "Postman", color: "text-[#FF6C37]", glow: "rgba(255,108,55,0.3)" },
             ].map((skill, i) => (
               <motion.div 
                 key={skill.name}
@@ -140,9 +171,29 @@ export default function Resume() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + (i * 0.05) }}
               >
-                <SpotlightCard className="h-full border-none bg-white/5 flex flex-col items-center justify-center p-4 group">
-                  <skill.icon className={`w-8 h-8 mb-2 ${skill.color} grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300`} />
-                  <span className="text-[8px] font-black uppercase tracking-widest text-muted-foreground/60 group-hover:text-white transition-colors">{skill.name}</span>
+                <SpotlightCard className={`h-full border-none bg-gradient-to-br from-white/5 to-transparent flex flex-col items-center justify-center p-4 group overflow-hidden`}>
+                  <skill.icon className={`w-10 h-10 mb-2 ${skill.color} transition-all duration-300 group-hover:scale-110 drop-shadow-[0_0_12px_${skill.glow}]`} />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 group-hover:text-white transition-colors">{skill.name}</span>
+                </SpotlightCard>
+              </motion.div>
+            ))}
+
+            {/* Bottom Row/Remaining Skills */}
+            {[
+              { icon: SiGit, name: "Git", color: "text-[#F05032]", glow: "rgba(240,80,50,0.3)" },
+              { icon: SiFigma, name: "Figma", color: "text-[#F24E1E]", glow: "rgba(242,78,30,0.3)" },
+            ].map((skill, i) => (
+              <motion.div 
+                key={skill.name}
+                className="col-span-1 row-span-1"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + (i * 0.05) }}
+              >
+                <SpotlightCard className={`h-full border-none bg-gradient-to-br from-white/5 to-transparent flex flex-col items-center justify-center p-4 group overflow-hidden`}>
+                  <skill.icon className={`w-10 h-10 mb-2 ${skill.color} transition-all duration-300 group-hover:scale-110 drop-shadow-[0_0_12px_${skill.glow}]`} />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 group-hover:text-white transition-colors">{skill.name}</span>
                 </SpotlightCard>
               </motion.div>
             ))}
@@ -155,9 +206,9 @@ export default function Resume() {
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
             >
-              <SpotlightCard className="h-full border-none bg-white/5 flex flex-col items-center justify-center p-4 group">
-                <SiTailwindcss className="w-8 h-8 text-[#06B6D4] group-hover:scale-110 transition-transform" />
-                <span className="text-[8px] font-black text-muted-foreground/60 uppercase tracking-widest mt-1">Tailwind</span>
+              <SpotlightCard className="h-full border-none bg-gradient-to-br from-[#06B6D4]/10 to-transparent flex flex-col items-center justify-center p-4 group">
+                <SiTailwindcss className="w-10 h-10 text-[#06B6D4] group-hover:scale-110 transition-transform drop-shadow-[0_0_12px_rgba(6,182,212,0.3)]" />
+                <span className="text-[10px] font-bold text-muted-foreground/80 uppercase tracking-widest mt-2 group-hover:text-white transition-colors">Tailwind</span>
               </SpotlightCard>
             </motion.div>
             
@@ -189,9 +240,9 @@ export default function Resume() {
               viewport={{ once: true }}
               transition={{ delay: 0.8 }}
             >
-              <SpotlightCard className="h-full border-none bg-white/5 flex flex-col items-center justify-center p-4 group">
-                <SiVite className="w-8 h-8 text-[#646CFF] transition-all group-hover:rotate-45" />
-                <span className="text-[8px] font-black text-muted-foreground/60 uppercase tracking-widest mt-1">Vite</span>
+              <SpotlightCard className="h-full border-none bg-gradient-to-br from-[#646CFF]/10 to-transparent flex flex-col items-center justify-center p-4 group">
+                <SiVite className="w-10 h-10 text-[#646CFF] transition-all group-hover:rotate-45 drop-shadow-[0_0_12px_rgba(100,108,255,0.3)]" />
+                <span className="text-[10px] font-bold text-muted-foreground/80 uppercase tracking-widest mt-2 group-hover:text-white transition-colors">Vite</span>
               </SpotlightCard>
             </motion.div>
           </div>
