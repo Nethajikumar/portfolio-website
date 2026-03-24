@@ -53,7 +53,30 @@ export default function Projects() {
       liveUrl: "https://make-deal.vercel.app/",
     },
     {
-      id: 2,
+      id: 3,
+      title: "Interview-Prep",
+      image: "/Interview.png",
+      description: "PrepDash is a structured frontend interview preparation platform designed to help developers revise and master key concepts through active recall.",
+      detailedDescription: "PrepDash is a structured frontend interview preparation platform designed to help developers revise and master key concepts through active recall. It includes categorized questions, progress tracking, and an intuitive UI for efficient learning and revision.",
+
+      technologies: [
+        "React.js",
+        "JavaScript (ES6+)",
+        "Tailwind CSS"
+      ],
+
+      features: [
+        "📚 140+ curated frontend interview questions",
+        "🧩 Category-based modules (HTML, CSS, JavaScript, React, Browser APIs, HR)",
+        "🔍 Real-time search functionality",
+        "📊 Progress tracking (Mastered questions)",
+        "⭐ Highlighted most frequently asked questions"
+      ],
+
+      liveUrl: "https://interview-prep-ten-nu.vercel.app/",
+    },
+    {
+      id: 3,
       title: "Modern Todo List",
       image: "/todo-new.png",
       description: "A high-performance Todo application with persistent state and fluid micro-interactions.",
@@ -68,7 +91,7 @@ export default function Projects() {
       liveUrl: "https://nethajikumar.github.io/todo-app/"
     },
     {
-      id: 3,
+      id: 4,
       title: "Spotify-Clone",
       image: "/spotify.jpg",
       description: "A pixel-perfect UI recreation of the Spotify web player with interactive audio controls.",
@@ -83,7 +106,7 @@ export default function Projects() {
       liveUrl: "https://nethajikumar.github.io/spotify-clone/",
     },
     {
-      id: 4,
+      id: 5,
       title: "Springboot-API-Test",
       image: "/spring.jpg",
       description: "A robust Java-based RESTful API demonstrating industrial-standard CRUD patterns.",
@@ -164,7 +187,7 @@ export default function Projects() {
             >
               <SpotlightCard className="border-none overflow-hidden rounded-3xl group/card">
                 <div className="flex flex-col md:grid md:grid-cols-2">
-                  <div 
+                  <div
                     className="aspect-video md:aspect-auto md:h-[500px] lg:h-[450px] w-full overflow-hidden relative cursor-pointer"
                     onClick={() => setSelectedProject(currentProject)}
                   >
@@ -175,10 +198,10 @@ export default function Projects() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#070913] via-transparent to-transparent opacity-60" />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px]">
-                       <Button variant="outline" className="rounded-full border-white/20 bg-white/10 text-white backdrop-blur-md">View Case Study</Button>
+                      <Button variant="outline" className="rounded-full border-white/20 bg-white/10 text-white backdrop-blur-md">View Case Study</Button>
                     </div>
                   </div>
-                  
+
                   <CardContent className="space-y-4 sm:space-y-6 p-6 sm:p-8 flex flex-col justify-center">
                     <motion.div
                       initial={{ opacity: 0, x: 10 }}
@@ -208,9 +231,9 @@ export default function Projects() {
                     </div>
 
                     <div className="flex gap-4 pt-6 mt-auto">
-                        <Button onClick={() => setSelectedProject(currentProject)} className="bg-primary hover:bg-primary/90 text-white shadow-[0_0_20px_hsl(var(--primary)/0.4)] transition-all flex-1 h-12 rounded-xl">
-                          Learn More
-                        </Button>
+                      <Button onClick={() => setSelectedProject(currentProject)} className="bg-primary hover:bg-primary/90 text-white shadow-[0_0_20px_hsl(var(--primary)/0.4)] transition-all flex-1 h-12 rounded-xl">
+                        Learn More
+                      </Button>
                       {currentProject.liveUrl && (
                         <Button variant="outline" asChild className="border-white/10 hover:bg-white/5 px-6 h-12 rounded-xl">
                           <a href={currentProject.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -272,7 +295,7 @@ export default function Projects() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#070913] to-transparent opacity-40" />
                   <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-white/10">
-                     <span className="text-[10px] text-white font-bold">{project.technologies[0]}</span>
+                    <span className="text-[10px] text-white font-bold">{project.technologies[0]}</span>
                   </div>
                 </div>
                 <CardContent className="p-5 flex flex-col flex-1">
@@ -284,9 +307,9 @@ export default function Projects() {
                   </p>
 
                   <div className="flex gap-4 mt-auto pt-4 border-t border-white/5 group-hover:border-primary/20 transition-colors">
-                     <span className="text-xs font-black uppercase text-primary tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">
-                        View Details <ChevronRight className="w-3 h-3" />
-                     </span>
+                    <span className="text-xs font-black uppercase text-primary tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">
+                      View Details <ChevronRight className="w-3 h-3" />
+                    </span>
                   </div>
                 </CardContent>
               </SpotlightCard>
@@ -299,20 +322,20 @@ export default function Projects() {
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="absolute inset-0 bg-black/90 backdrop-blur-xl"
               onClick={() => setSelectedProject(null)}
             />
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#070913] border border-white/10 rounded-[2.5rem] shadow-2xl sidebar-hide"
             >
-              <button 
+              <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-6 right-6 p-2 bg-white/5 hover:bg-white/10 rounded-full text-white z-10 transition-colors"
               >
@@ -320,64 +343,64 @@ export default function Projects() {
               </button>
 
               <div className="grid md:grid-cols-2 gap-0">
-                 <div className="h-[300px] md:h-full relative overflow-hidden">
-                    <img 
-                      src={selectedProject.image} 
-                      alt={selectedProject.title} 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#070913] via-transparent to-transparent" />
-                 </div>
-                 <div className="p-8 sm:p-12 space-y-8 flex flex-col">
-                    <div>
-                      <h2 className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text tracking-tighter mb-4">
-                        {selectedProject.title}
-                      </h2>
-                      <p className="text-muted-foreground leading-relaxed text-lg">
-                        {selectedProject.detailedDescription}
-                      </p>
-                    </div>
+                <div className="h-[300px] md:h-full relative overflow-hidden">
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#070913] via-transparent to-transparent" />
+                </div>
+                <div className="p-8 sm:p-12 space-y-8 flex flex-col">
+                  <div>
+                    <h2 className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text tracking-tighter mb-4">
+                      {selectedProject.title}
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed text-lg">
+                      {selectedProject.detailedDescription}
+                    </p>
+                  </div>
 
-                    <div className="space-y-4">
-                       <h3 className="text-xs font-black uppercase tracking-[0.3em] text-white/40">Core Technologies</h3>
-                       <div className="flex flex-wrap gap-2">
-                         {selectedProject.technologies.map(tech => (
-                           <span key={tech} className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-bold text-primary">
-                             {tech}
-                           </span>
-                         ))}
-                       </div>
+                  <div className="space-y-4">
+                    <h3 className="text-xs font-black uppercase tracking-[0.3em] text-white/40">Core Technologies</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map(tech => (
+                        <span key={tech} className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-bold text-primary">
+                          {tech}
+                        </span>
+                      ))}
                     </div>
+                  </div>
 
-                    <div className="space-y-4">
-                       <h3 className="text-xs font-black uppercase tracking-[0.3em] text-white/40">Key Highights</h3>
-                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                         {selectedProject.features.map(feature => (
-                           <li key={feature} className="flex items-start gap-2 text-sm text-foreground/80 font-medium">
-                              <div className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
-                              {feature}
-                           </li>
-                         ))}
-                       </ul>
-                    </div>
+                  <div className="space-y-4">
+                    <h3 className="text-xs font-black uppercase tracking-[0.3em] text-white/40">Key Highights</h3>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {selectedProject.features.map(feature => (
+                        <li key={feature} className="flex items-start gap-2 text-sm text-foreground/80 font-medium">
+                          <div className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                    <div className="pt-6 mt-auto flex flex-col sm:flex-row gap-4">
-                      {selectedProject.liveUrl && (
-                        <Button asChild className="bg-primary hover:bg-primary/90 text-white h-14 rounded-2xl flex-1 text-lg font-black tracking-tighter">
-                          <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer">
-                            VISIT LIVE PROJECT <ExternalLink className="w-5 h-5 ml-2" />
-                          </a>
-                        </Button>
-                      )}
-                      {selectedProject.githubUrl && (
-                        <Button variant="outline" asChild className="border-white/10 h-14 rounded-2xl flex-1 text-lg font-black tracking-tighter">
-                          <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
-                             SOURCE CODE
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                 </div>
+                  <div className="pt-6 mt-auto flex flex-col sm:flex-row gap-4">
+                    {selectedProject.liveUrl && (
+                      <Button asChild className="bg-primary hover:bg-primary/90 text-white h-14 rounded-2xl flex-1 text-lg font-black tracking-tighter">
+                        <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer">
+                          VISIT LIVE PROJECT <ExternalLink className="w-5 h-5 ml-2" />
+                        </a>
+                      </Button>
+                    )}
+                    {selectedProject.githubUrl && (
+                      <Button variant="outline" asChild className="border-white/10 h-14 rounded-2xl flex-1 text-lg font-black tracking-tighter">
+                        <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
+                          SOURCE CODE
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
